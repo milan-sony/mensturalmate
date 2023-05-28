@@ -67,19 +67,42 @@ void edit_period_details(){
     getch();
 }
 
+// function to calculate next period dates
+void calculate_next_period_dates(){
+    printf("\n\n\tPERIOD DATES FOR THE NEXT 3 MONTHS\n\n");
+
+    int day = periods.day;
+    int month = periods.month;
+
+    /* 
+    Inside the loop, it prints the current day and month values using the printf() function with a format specifier "%02d/%02d" to display them as a two-digit day and month. 
+    */
+
+    for (int i = 0; i < 3; i++){
+        printf("%02d/%02d\n", day,month);
+        day += periods.cycle_length;
+        if (day>30){
+            day-=30;
+            month++;
+        }
+    }
+    getch();
+}
+
 // main function
 void main(){
     int choice;
-    printf("\n\n\t-----------------------------------------\n");
-    printf("\t\t\tMENSTURA\n");
-    printf("\t-----------------------------------------");
+    printf("\n\n\t----------------------------------------------\n");
+    printf("\t\t\tMENSTURALMATE\n");
+    printf("\t-----------------------------------------------");
     while (1)
     {
-        printf("\n\n\t\t\tMAIN MENU");
-        printf("\n\n\t\tADD DETAILS\t[PRESS-1]");
-        printf("\n\n\t\tVIEW DETAILS\t[PRESS-2]");
-        printf("\n\n\t\tEDIT DETAILS\t[PRESS-3]");
-        printf("\n\n\t\t\tEXIT\t[PRESS-0]");
+        printf("\n\n\t\t\t\tMAIN MENU");
+        printf("\n\n\t\tADD DETAILS\t\t[PRESS-1]");
+        printf("\n\n\t\tVIEW DETAILS\t\t[PRESS-2]");
+        printf("\n\n\t\tEDIT DETAILS\t\t[PRESS-3]");
+        printf("\n\n\t\tVIEW NEXT PERIOD DATES\t[PRESS-4]");
+        printf("\n\n\t\tEXIT\t\t\t[PRESS-0]");
         printf("\n\n\t=> ENTER YOUR CHOICE: ");
         scanf("%d", &choice);
         switch (choice)
@@ -93,6 +116,9 @@ void main(){
             case 3:
                 edit_period_details();
                 break;
+            case 4:
+                calculate_next_period_dates();
+                break;
             case 0:
                 exit(0);
             default:
@@ -103,4 +129,5 @@ void main(){
         }
     system("cls");
     }
+    getch();
 }
