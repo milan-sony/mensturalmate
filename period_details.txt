@@ -1,0 +1,3 @@
+Last period date: 7/5
+Cycle length: 28 days
+Period length: 5 days
