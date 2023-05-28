@@ -45,7 +45,25 @@ void view_period_details(){
 
 // function to edit period details
 void edit_period_details(){
-    printf("edit");
+    printf("\n\n\tEDIT DETAILS\n\n");
+    printf("\tLAST PERIOD DATE: %d/%d/%d", periods.day,periods.month,periods.year);
+    printf("\n\tEDIT YOUR LAST PERIOD DATE\n");
+    printf("\tDAY(DD): ");
+    scanf("%d", &periods.day);
+    printf("\tMONTH(MM): ");
+    scanf("%d", &periods.month);
+    printf("\tYEAR(YYYY): ");
+    scanf("%d", &periods.year);
+    printf("\n\n\tEDIT YOUR CYCLE LENGTH\n");
+    printf("\t(DAYS FROM THE FIRST DAY OF YOUR PERIOD TO A DAY BEFORE THE NEXT PERIOD)\n");
+    printf("\n\tLAST CYCLE LENGTH: %d DAYS", periods.cycle_length);
+    printf("\n\tEDIT THE NUMBER IN DAYS(DD): ");
+    scanf("%d", &periods.cycle_length);
+    printf("\n\n\tEDIT YOUR PERIOD LENGTH\n");
+    printf("\n\tLAST PERIOD LENGTH: %d DAYS", periods.period_length);
+    printf("\n\tEDIT THE NUMBER IN DAYS(DD): ");
+    scanf("%d", &periods.period_length);
+    printf("\n\tYOUR PERIOD DETAILS WHERE UPDATED SUCCESSFULLY (PRESS ANY KEY TO CONTINUE)");
     getch();
 }
 
