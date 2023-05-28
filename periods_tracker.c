@@ -16,19 +16,30 @@ struct period_details
 void add_period_details(){
     printf("\n\n\tADD DETAILS\n\n");
     printf("\tWHEN DID YOUR LAST PERIOD START ?\n");
-    printf("\n\tDAY(DD): ");
+    printf("\tDAY(DD): ");
     scanf("%d", &periods.day);
-    printf("\n\tMONTH(MM): ");
+    printf("\tMONTH(MM): ");
     scanf("%d", &periods.month);
-    printf("\n\tYEAR(YYYY): ");
+    printf("\tYEAR(YYYY): ");
     scanf("%d", &periods.year);
-    printf("\n\tYOUR PERIOD DETAILS ADDED SUCCESSFULLY (PRESS ANY KEY TO CONTINUE)");
+    printf("\n\n\tWHATS YOUR CYCLE LENGTH ?\n");
+    printf("\t(DAYS FROM THE FIRST DAY OF YOUR PERIOD TO A DAY BEFORE THE NEXT PERIOD)\n");
+    printf("\tENTER THE NUMBER IN DAYS(DD): ");
+    scanf("%d", &periods.cycle_length);
+    printf("\n\n\tWHATS YOUR PERIOD LENGTH ?\n");
+    printf("\tENTER THE NUMBER IN DAYS(DD): ");
+    scanf("%d", &periods.period_length);
+    printf("\n\tYOUR PERIOD DETAILS WHERE ADDED SUCCESSFULLY (PRESS ANY KEY TO CONTINUE)");
     getch();
 }
 
 // function to view period details
 void view_period_details(){
-    printf("view");
+    printf("\n\n\tVIEW DETAILS\n\n");
+    printf("\tLAST PERIOD DATE: %d/%d/%d", periods.day,periods.month,periods.year);
+    printf("\n\tCYCLE LENGTH: %d DAYS", periods.cycle_length);
+    printf("\n\tPERIOD LENGTH: %d DAYS", periods.period_length);
+    printf("\n\n\tPRESS ANY KEY TO CONTINUE");
     getch();
 }
 
