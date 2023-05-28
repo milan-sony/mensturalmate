@@ -1,0 +1,2 @@
+compile the code  : gcc periods_tracker.c -o periods_tracker
+run the code  : .\periods_tracker
