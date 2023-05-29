@@ -14,96 +14,115 @@ struct period_details
 
 // function to add period details
 void add_period_details(){
+
     printf("\n\n\tADD DETAILS\n\n");
+
     printf("\tWHEN DID YOUR LAST PERIOD START ?\n");
     printf("\tDAY(DD): ");
     scanf("%d", &periods.day);
+
     printf("\tMONTH(MM): ");
     scanf("%d", &periods.month);
+
     printf("\tYEAR(YYYY): ");
     scanf("%d", &periods.year);
+
     printf("\n\n\tWHATS YOUR CYCLE LENGTH ?\n");
     printf("\t(DAYS FROM THE FIRST DAY OF YOUR PERIOD TO A DAY BEFORE THE NEXT PERIOD)\n");
     printf("\tENTER THE NUMBER IN DAYS(DD): ");
     scanf("%d", &periods.cycle_length);
+
     printf("\n\n\tWHATS YOUR PERIOD LENGTH ?\n");
     printf("\tENTER THE NUMBER IN DAYS(DD): ");
     scanf("%d", &periods.period_length);
+
     printf("\n\tYOUR PERIOD DETAILS WHERE ADDED SUCCESSFULLY (PRESS ANY KEY TO CONTINUE)");
     getch();
 }
 
 // function to view period details
 void view_period_details(){
+
     printf("\n\n\tVIEW DETAILS\n\n");
+
     printf("\tLAST PERIOD DATE: %d/%d/%d", periods.day,periods.month,periods.year);
+
     printf("\n\tCYCLE LENGTH: %d DAYS", periods.cycle_length);
+
     printf("\n\tPERIOD LENGTH: %d DAYS", periods.period_length);
+
     printf("\n\n\tPRESS ANY KEY TO CONTINUE");
     getch();
 }
 
 // function to edit period details
 void edit_period_details(){
+
     printf("\n\n\tEDIT DETAILS\n\n");
+
     printf("\tLAST PERIOD DATE: %d/%d/%d", periods.day,periods.month,periods.year);
     printf("\n\tEDIT YOUR LAST PERIOD DATE\n");
+
     printf("\tDAY(DD): ");
     scanf("%d", &periods.day);
+
     printf("\tMONTH(MM): ");
     scanf("%d", &periods.month);
+
     printf("\tYEAR(YYYY): ");
     scanf("%d", &periods.year);
+
     printf("\n\n\tEDIT YOUR CYCLE LENGTH\n");
     printf("\t(DAYS FROM THE FIRST DAY OF YOUR PERIOD TO A DAY BEFORE THE NEXT PERIOD)\n");
     printf("\n\tLAST CYCLE LENGTH: %d DAYS", periods.cycle_length);
     printf("\n\tEDIT THE NUMBER IN DAYS(DD): ");
     scanf("%d", &periods.cycle_length);
+
     printf("\n\n\tEDIT YOUR PERIOD LENGTH\n");
     printf("\n\tLAST PERIOD LENGTH: %d DAYS", periods.period_length);
     printf("\n\tEDIT THE NUMBER IN DAYS(DD): ");
     scanf("%d", &periods.period_length);
+
     printf("\n\tYOUR PERIOD DETAILS WHERE UPDATED SUCCESSFULLY (PRESS ANY KEY TO CONTINUE)");
+
     getch();
 }
 
 // function to calculate next period dates
 void calculate_next_period_dates(){
+
     printf("\n\n\tPERIOD DATES FOR THE NEXT 3 MONTHS\n\n");
 
     int day = periods.day;
     int month = periods.month;
     int year = periods.year;
 
-    /* 
-    condition to check if the month value exceeds 12. If it does, set the month to 1 and increment the year value.
-    Here we assumes that the cycle_length attribute does not exceed the number of days in a month (30 in this case).
-    */
-
-    for (int i = 0; i < 4; i++) {
-        printf("\t%d/%d/%d\n", day, month, year);
-        day += periods.cycle_length;                              
-        if (day > 30) {
+    for (int i = 0; i < 3; i++){
+        day += periods.cycle_length;
+        if (day > 30){
             day -= 30;
             month++;
-            if (month > 12) {
+            if (month > 12){
                 month = 1;
                 year++; // Increment year if month exceeds 12
             }
         }
+        printf("\t%d/%d/%d\n", day, month, year);
     }
+
     printf("\n\tPRESS ANY KEY TO CONTINUE");
     getch();
 }
 
 // main function
 void main(){
+
     int choice;
     printf("\n\n\t----------------------------------------------\n");
     printf("\t\t\tMENSTURALMATE\n");
     printf("\t-----------------------------------------------");
-    while (1)
-    {
+
+    while (1){
         printf("\n\n\t\t\t\tMAIN MENU");
         printf("\n\n\t\tADD DETAILS\t\t[PRESS-1]");
         printf("\n\n\t\tVIEW DETAILS\t\t[PRESS-2]");
@@ -112,8 +131,8 @@ void main(){
         printf("\n\n\t\tEXIT\t\t\t[PRESS-0]");
         printf("\n\n\t=> ENTER YOUR CHOICE: ");
         scanf("%d", &choice);
-        switch (choice)
-        {
+
+        switch (choice){
             case 1:
                 add_period_details();
                 break;
@@ -134,6 +153,7 @@ void main(){
                 getch();
                 break;
         }
+        
     system("cls");
     }
     getch();
