@@ -73,19 +73,26 @@ void calculate_next_period_dates(){
 
     int day = periods.day;
     int month = periods.month;
+    int year = periods.year;
 
     /* 
-    Inside the loop, it prints the current day and month values using the printf() function with a format specifier "%02d/%02d" to display them as a two-digit day and month. 
+    condition to check if the month value exceeds 12. If it does, set the month to 1 and increment the year value.
+    Here we assumes that the cycle_length attribute does not exceed the number of days in a month (30 in this case).
     */
 
-    for (int i = 0; i < 3; i++){
-        printf("%02d/%02d\n", day,month);
+    for (int i = 0; i < 4; i++) {
+        printf("\t%d/%d/%d\n", day, month, year);
         day += periods.cycle_length;
-        if (day>30){
-            day-=30;
+        if (day > 30) {
+            day -= 30;
             month++;
+            if (month > 12) {
+                month = 1;
+                year++; // Increment year if month exceeds 12
+            }
         }
     }
+    printf("\n\tPRESS ANY KEY TO CONTINUE");
     getch();
 }
 
