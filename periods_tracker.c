@@ -82,7 +82,7 @@ void calculate_next_period_dates(){
 
     for (int i = 0; i < 4; i++) {
         printf("\t%d/%d/%d\n", day, month, year);
-        day += periods.cycle_length;
+        day += periods.cycle_length;                              
         if (day > 30) {
             day -= 30;
             month++;
