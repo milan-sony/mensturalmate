@@ -36,7 +36,7 @@ void add_period_details(){
     printf("\tENTER THE NUMBER IN DAYS(DD): ");
     scanf("%d", &periods.period_length);
 
-    printf("\n\tYOUR PERIOD DETAILS WHERE ADDED SUCCESSFULLY (PRESS ANY KEY TO CONTINUE)");
+    printf("\n\tYOUR PERIOD DETAILS WHERE ADDED SUCCESSFULLY\n\n\tPRESS ANY KEY TO CONTINUE");
     getch();
 }
 
@@ -83,7 +83,7 @@ void edit_period_details(){
     printf("\n\tEDIT THE NUMBER IN DAYS(DD): ");
     scanf("%d", &periods.period_length);
 
-    printf("\n\tYOUR PERIOD DETAILS WHERE UPDATED SUCCESSFULLY (PRESS ANY KEY TO CONTINUE)");
+    printf("\n\tYOUR PERIOD DETAILS WERE UPDATED SUCCESSFULLY\n\n\tPRESS ANY KEY TO CONTINUE");
 
     getch();
 }
@@ -131,10 +131,44 @@ void calculate_next_period_dates(){
                 year++;
             }
         }
-        printf("\t%d/%d/%d\n", day, month, year);
+        printf("\t%d/%d/%d\n\n", day, month, year);
     }
 
     printf("\n\tPRESS ANY KEY TO CONTINUE");
+    getch();
+}
+
+// function to save period details
+void save_period_details(){
+    int day = periods.day;
+    int month = periods.month;
+    int year = periods.year;
+
+    // Create a file pointer
+    FILE *file = fopen("period_dates.txt", "w");
+
+    if (file == NULL)
+    {
+        printf("UNABLE TO CREATE THE FILE");
+    }
+
+    for (int i = 0; i < 3; i++){
+        day += periods.cycle_length;
+        if (day > 30){
+            day -= 30;
+            month++;
+            if (month > 12){
+                month = 1;
+                year++;
+            }
+        }
+        fprintf(file, "%d/%d/%d\n\n", day, month, year);
+    }
+
+    // close the file
+    fclose(file);
+    printf("\n\tPERIOD DATES FOR THE NEXT 3 MONTHS WERE SAVED IN 'period_dates.txt' FILE");
+    printf("\n\n\tPRESS ANY KEY TO CONTINUE");
     getch();
 }
 
@@ -142,16 +176,16 @@ void calculate_next_period_dates(){
 void main(){
 
     int choice;
-    printf("\n\n\t----------------------------------------------\n");
-    printf("\t\t\tMENSTURALMATE\n");
-    printf("\t-----------------------------------------------");
-
     while (1){
+        printf("\n\n\t----------------------------------------------\n");
+        printf("\t\t\tMENSTURALMATE\n");
+        printf("\t-----------------------------------------------");
         printf("\n\n\t\t\t\tMAIN MENU");
         printf("\n\n\t\tADD DETAILS\t\t[PRESS-1]");
         printf("\n\n\t\tVIEW DETAILS\t\t[PRESS-2]");
         printf("\n\n\t\tEDIT DETAILS\t\t[PRESS-3]");
         printf("\n\n\t\tVIEW NEXT PERIOD DATES\t[PRESS-4]");
+        printf("\n\n\t\tSAVE PERIOD DATES\t[PRESS-5]");
         printf("\n\n\t\tEXIT\t\t\t[PRESS-0]");
         printf("\n\n\t=> ENTER YOUR CHOICE: ");
         scanf("%d", &choice);
@@ -168,6 +202,9 @@ void main(){
                 break;
             case 4:
                 calculate_next_period_dates();
+                break;
+            case 5:
+                save_period_details();
                 break;
             case 0:
                 exit(0);
