@@ -119,7 +119,6 @@ void calculate_next_period_dates(){
     8. The loop continues until it completes 3 iterations, printing the dates for the next 3 months
 
     9. Finally, the function prints the message asking the user to press any key to continue and waits for a key press using getch()
-
     */
 
     for (int i = 0; i < 3; i++){
