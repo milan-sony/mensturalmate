@@ -43,132 +43,164 @@ void add_period_details(){
 // function to view period details
 void view_period_details(){
 
-    printf("\n\n\tVIEW DETAILS\n\n");
+    if (periods.day == '\0'){
+        printf("\n\n\t YOU HAVE NOT ADDED ANY DETAILS");
+        printf("\n\n\t PRESS ANY KEY TO CONTINUE");
+    }
+    else{
+        printf("\n\n\tVIEW DETAILS\n\n");
 
-    printf("\tLAST PERIOD DATE: %d/%d/%d", periods.day,periods.month,periods.year);
+        printf("\tLAST PERIOD DATE: %d/%d/%d", periods.day,periods.month,periods.year);
 
-    printf("\n\tCYCLE LENGTH: %d DAYS", periods.cycle_length);
+        printf("\n\tCYCLE LENGTH: %d DAYS", periods.cycle_length);
 
-    printf("\n\tPERIOD LENGTH: %d DAYS", periods.period_length);
+        printf("\n\tPERIOD LENGTH: %d DAYS", periods.period_length);
 
-    printf("\n\n\tPRESS ANY KEY TO CONTINUE");
+        printf("\n\n\tPRESS ANY KEY TO CONTINUE");
+    }
     getch();
 }
 
 // function to edit period details
 void edit_period_details(){
 
-    printf("\n\n\tEDIT DETAILS\n\n");
+    if (periods.day == '\0'){
+        printf("\n\n\t YOU HAVE NOT ADDED ANY DETAILS");
+        printf("\n\n\t PRESS ANY KEY TO CONTINUE");
+    }
+    else{
+        printf("\n\n\tEDIT DETAILS\n\n");
 
-    printf("\tLAST PERIOD DATE: %d/%d/%d", periods.day,periods.month,periods.year);
-    printf("\n\tEDIT YOUR LAST PERIOD DATE\n");
+        printf("\tLAST PERIOD DATE: %d/%d/%d", periods.day,periods.month,periods.year);
+        printf("\n\tEDIT YOUR LAST PERIOD DATE\n");
 
-    printf("\tDAY(DD): ");
-    scanf("%d", &periods.day);
+        printf("\tDAY(DD): ");
+        scanf("%d", &periods.day);
 
-    printf("\tMONTH(MM): ");
-    scanf("%d", &periods.month);
+        printf("\tMONTH(MM): ");
+        scanf("%d", &periods.month);
 
-    printf("\tYEAR(YYYY): ");
-    scanf("%d", &periods.year);
+        printf("\tYEAR(YYYY): ");
+        scanf("%d", &periods.year);
 
-    printf("\n\n\tEDIT YOUR CYCLE LENGTH\n");
-    printf("\t(DAYS FROM THE FIRST DAY OF YOUR PERIOD TO A DAY BEFORE THE NEXT PERIOD)\n");
-    printf("\n\tLAST CYCLE LENGTH: %d DAYS", periods.cycle_length);
-    printf("\n\tEDIT THE NUMBER IN DAYS(DD): ");
-    scanf("%d", &periods.cycle_length);
+        printf("\n\n\tEDIT YOUR CYCLE LENGTH\n");
+        printf("\t(DAYS FROM THE FIRST DAY OF YOUR PERIOD TO A DAY BEFORE THE NEXT PERIOD)\n");
+        printf("\n\tLAST CYCLE LENGTH: %d DAYS", periods.cycle_length);
+        printf("\n\tEDIT THE NUMBER IN DAYS(DD): ");
+        scanf("%d", &periods.cycle_length);
 
-    printf("\n\n\tEDIT YOUR PERIOD LENGTH\n");
-    printf("\n\tLAST PERIOD LENGTH: %d DAYS", periods.period_length);
-    printf("\n\tEDIT THE NUMBER IN DAYS(DD): ");
-    scanf("%d", &periods.period_length);
+        printf("\n\n\tEDIT YOUR PERIOD LENGTH\n");
+        printf("\n\tLAST PERIOD LENGTH: %d DAYS", periods.period_length);
+        printf("\n\tEDIT THE NUMBER IN DAYS(DD): ");
+        scanf("%d", &periods.period_length);
 
-    printf("\n\tYOUR PERIOD DETAILS WERE UPDATED SUCCESSFULLY\n\n\tPRESS ANY KEY TO CONTINUE");
-
+        printf("\n\tYOUR PERIOD DETAILS WERE UPDATED SUCCESSFULLY\n\n\tPRESS ANY KEY TO CONTINUE");
+    }
     getch();
 }
 
 // function to calculate next period dates
 void calculate_next_period_dates(){
 
-    printf("\n\n\tPERIOD DATES FOR THE NEXT 3 MONTHS\n\n");
+    if (periods.day == '\0'){
+        printf("\n\n\t YOU HAVE NOT ADDED ANY DETAILS");
+        printf("\n\n\t PRESS ANY KEY TO CONTINUE");
+    }
+    else{
 
-    int day = periods.day;
-    int month = periods.month;
-    int year = periods.year;
+        printf("\n\n\tYOUR PERIOD DATES FOR THE NEXT 3 MONTHS ARE:\n\n");
 
-    /*
-    Calculate the period date for the next 3 months
+        int day = periods.day;
+        int month = periods.month;
+        int year = periods.year;
 
-    1. First iterate the loop for 3 times
+        /*
+        Calculate the period date for the next 3 months
 
-    2. The next day is calculated by:
+        1. First iterate the loop for 3 times
+
+        2. The next day is calculated by:
         next day => day + cycle length
 
-    3. Here we assumes that the cycle length does not exceed the number of days in a month (30 in this case) and each month has only 30 days
+        3. Here we assumes that the cycle length does not exceed the number of days in a month (30 in this case) and each month has only 30 days
 
-    4. If the day is greater than (>) 30 (which indicates that the next period extends to the next month)
+        4. If the day is greater than (>) 30 (which indicates that the next period extends to the next month)
         subtract 30 from day to set it to the appropriate day within the month
     
-    5. Then increment the value of the month by 1  to represent the next month
+        5. Then increment the value of the month by 1  to represent the next month
 
-    6. After incrementing the month, it checks if the updated month value exceeds 12, indicating that the period extends to the next year
+        6. After incrementing the month, it checks if the updated month value exceeds 12, indicating that the period extends to the next year
 
-    7. If the month value is greater than 12, it sets month to 1 to represent January and increments the year variable by 1
+        7. If the month value is greater than 12, it sets month to 1 to represent January and increments the year variable by 1
 
-    8. The loop continues until it completes 3 iterations, printing the dates for the next 3 months
+        8. The loop continues until it completes 3 iterations, printing the dates for the next 3 months
 
-    9. Finally, the function prints the message asking the user to press any key to continue and waits for a key press using getch()
-    */
+        9. Finally, the function prints the message asking the user to press any key to continue and waits for a key press using getch()
+        */
 
-    for (int i = 0; i < 3; i++){
-        day += periods.cycle_length;
-        if (day > 30){
-            day -= 30;
-            month++;
-            if (month > 12){
-                month = 1;
-                year++;
+        for (int i = 0; i < 3; i++){
+            day += periods.cycle_length;
+            if (day > 30){
+                day -= 30;
+                month++;
+                if (month > 12){
+                    month = 1;
+                    year++;
+                }
             }
+            printf("\t=> \t%d/%d/%d\n\n", day, month, year);
         }
-        printf("\t%d/%d/%d\n\n", day, month, year);
+        printf("\n\tPRESS ANY KEY TO CONTINUE");
     }
-
-    printf("\n\tPRESS ANY KEY TO CONTINUE");
     getch();
 }
 
 // function to save period details
 void save_period_details(){
-    int day = periods.day;
-    int month = periods.month;
-    int year = periods.year;
 
-    // Create a file pointer
-    FILE *file = fopen("period_dates.txt", "w");
+    if (periods.day == '\0'){
 
-    if (file == NULL)
-    {
-        printf("UNABLE TO CREATE THE FILE");
+        printf("\n\n\t YOU HAVE NOT ADDED ANY DETAILS");
+        printf("\n\n\t PRESS ANY KEY TO CONTINUE");
+
     }
+    else{
 
-    for (int i = 0; i < 3; i++){
-        day += periods.cycle_length;
-        if (day > 30){
-            day -= 30;
-            month++;
-            if (month > 12){
-                month = 1;
-                year++;
-            }
+        int day = periods.day;
+        int month = periods.month;
+        int year = periods.year;
+
+        // Create a file pointer
+        FILE *file = fopen("period_details.txt", "w");
+
+        if (file == NULL){
+            printf("UNABLE TO CREATE THE FILE");
         }
-        fprintf(file, "%d/%d/%d\n\n", day, month, year);
-    }
 
-    // close the file
-    fclose(file);
-    printf("\n\tPERIOD DATES FOR THE NEXT 3 MONTHS WERE SAVED IN 'period_dates.txt' FILE");
-    printf("\n\n\tPRESS ANY KEY TO CONTINUE");
+        fprintf(file, "YOUR PERIOD DETAILS\n\n");
+        fprintf(file, "=> Last period date: %d/%d/%d\n", periods.day, periods.month, periods.year);
+        fprintf(file, "=> Cycle length: %d\n", periods.cycle_length);
+        fprintf(file, "=> Period length: %d\n\n", periods.period_length);
+        fprintf(file, "YOUR PERIOD DATES FOR THE NEXT 3 MONTHS ARE:\n\n");
+
+        for (int i = 0; i < 3; i++){
+            day += periods.cycle_length;
+            if (day > 30){
+                day -= 30;
+                month++;
+                if (month > 12){
+                    month = 1;
+                    year++;
+                }
+            }
+            fprintf(file, "=> %d/%d/%d\n\n", day, month, year);
+        }
+
+        // close the file
+        fclose(file);
+        printf("\n\tYOUR PERIOD DATES WERE SAVED SUCCESSFULLY IN 'period_details.txt' FILE");
+        printf("\n\n\tPRESS ANY KEY TO CONTINUE");
+    }
     getch();
 }
 
@@ -185,7 +217,7 @@ void main(){
         printf("\n\n\t\tVIEW DETAILS\t\t[PRESS-2]");
         printf("\n\n\t\tEDIT DETAILS\t\t[PRESS-3]");
         printf("\n\n\t\tVIEW NEXT PERIOD DATES\t[PRESS-4]");
-        printf("\n\n\t\tSAVE PERIOD DATES\t[PRESS-5]");
+        printf("\n\n\t\tSAVE ALL DETAILS\t[PRESS-5]");
         printf("\n\n\t\tEXIT\t\t\t[PRESS-0]");
         printf("\n\n\t=> ENTER YOUR CHOICE: ");
         scanf("%d", &choice);
@@ -207,10 +239,11 @@ void main(){
                 save_period_details();
                 break;
             case 0:
+                printf("\n\n");
                 exit(0);
             default:
                 printf("\n\tYOU HAVE ENTERED WRONG CHOICE");
-                printf("\n\tPRESS ANY KEY TO TRY AGAIN");
+                printf("\n\n\tPRESS ANY KEY TO TRY AGAIN");
                 getch();
                 break;
         }
