@@ -14,7 +14,7 @@ To run this project, you need to install an IDE/Code Editor (<a href = "https://
 3. Microsoft C++ compiler on windows
 4. Clang for XCode on MacOS
 
-Check out this <a href = "https://www.javatpoint.com/how-to-run-a-c-program-in-visual-studio-code"> link </a> to learn how to run a C program in Visual Studio Code.
+Check out this <a href = "https://www.javatpoint.com/how-to-run-a-c-program-in-visual-studio-code"> link </a> to know how to run a C program in Visual Studio Code.
 
 To compile the code
 
