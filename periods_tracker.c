@@ -198,7 +198,7 @@ void save_period_details(){
 
         // close the file
         fclose(file);
-        printf("\n\tYOUR PERIOD DATES WERE SAVED SUCCESSFULLY IN 'period_details.txt' FILE");
+        printf("\n\tYOUR PERIOD DETAILS WERE SAVED SUCCESSFULLY IN 'period_details.txt' FILE");
         printf("\n\n\tPRESS ANY KEY TO CONTINUE");
     }
     getch();
