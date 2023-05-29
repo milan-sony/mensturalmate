@@ -28,6 +28,34 @@ Run the code
   .\periods_tracker
 ```
 
+```bash
+// stucture to hold the period details
+struct period_details
+{
+    int day;
+    int month;
+    int year;
+    int cycle_length;
+    int period_length;
+}periods;
+```
+
+```bash
+for (int i = 0; i < 3; i++){
+    day += periods.cycle_length;
+    if (day > 30){
+        day -= 30;
+        month++;
+        if (month > 12){
+            month = 1;
+            year++;
+         }
+     }
+     printf("\t=> \t%d/%d/%d\n\n", day, month, year);
+}
+```
+> Here we assumes that the cycle length does not exceed the number of days in a month (30 in this case) and each month has only 30 days. So the dates generated will be just an approximate dates
+
 ## Screenshot
 
 <img src="./assets/Screenshot.png">
