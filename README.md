@@ -1,3 +1,7 @@
+<p align="center">
+    <img width="100" src="./assets/icon.png" alt="Icon">
+</p>
+
 # MensturalMate
 
 A simple menu driven period calculator build in C language as part of my mini-project in MCA Semester 1
@@ -14,4 +18,4 @@ Check out this <a href = "https://www.javatpoint.com/how-to-run-a-c-program-in-v
 
 ## Screenshot
 
-<img src="./screenshot/Screenshot.png">
+<img src="./assets/Screenshot.png">
