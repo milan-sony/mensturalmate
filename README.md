@@ -16,6 +16,18 @@ To run this project, you need to install an IDE/Code Editor (<a href = "https://
 
 Check out this <a href = "https://www.javatpoint.com/how-to-run-a-c-program-in-visual-studio-code"> link </a> to know how to run a C program in Visual Studio Code.
 
+To compile the code
+
+```bash
+  gcc periods_tracker.c -o periods_tracker
+```
+
+Run the code 
+
+```bash
+  .\periods_tracker
+```
+
 ## Screenshot
 
 <img src="./assets/Screenshot.png">
