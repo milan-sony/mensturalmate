@@ -43,8 +43,8 @@ struct period_details
 ```bash
 for (int i = 0; i < 3; i++){
     day += periods.cycle_length;
-    if (day > 30){
-        day -= 30;
+    if (day > days_in_month){
+        day -= days_in_month;
         month++;
         if (month > 12){
             month = 1;
@@ -54,7 +54,6 @@ for (int i = 0; i < 3; i++){
      printf("\t=> \t%d/%d/%d\n\n", day, month, year);
 }
 ```
-> Here we assumes that the cycle length does not exceed the number of days in a month (30 in this case) and each month has only 30 days. So the dates generated will be just an approximate dates
 
 ## Screenshot
 
