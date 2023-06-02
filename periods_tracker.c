@@ -50,11 +50,11 @@ void view_period_details(){
     else{
         printf("\n\n\tVIEW DETAILS\n\n");
 
-        printf("\tLAST PERIOD DATE: %d/%d/%d", periods.day,periods.month,periods.year);
+        printf("\tYOUR LAST PERIOD DATE\t: %d/%d/%d", periods.day,periods.month,periods.year);
 
-        printf("\n\tCYCLE LENGTH: %d DAYS", periods.cycle_length);
+        printf("\n\tCYCLE LENGTH\t\t: %d DAYS", periods.cycle_length);
 
-        printf("\n\tPERIOD LENGTH: %d DAYS", periods.period_length);
+        printf("\n\tPERIOD LENGTH\t\t: %d DAYS", periods.period_length);
 
         printf("\n\n\tPRESS ANY KEY TO CONTINUE");
     }
@@ -71,7 +71,7 @@ void edit_period_details(){
     else{
         printf("\n\n\tEDIT DETAILS\n\n");
 
-        printf("\tLAST PERIOD DATE: %d/%d/%d", periods.day,periods.month,periods.year);
+        printf("\tYOUR LAST PERIOD DATE: %d/%d/%d", periods.day,periods.month,periods.year);
         printf("\n\tEDIT YOUR LAST PERIOD DATE\n");
 
         printf("\tDAY(DD): ");
@@ -200,9 +200,9 @@ void save_period_details(){
         }
 
         fprintf(file, "YOUR PERIOD DETAILS\n\n");
-        fprintf(file, "=> Last period date: %d/%d/%d\n", periods.day, periods.month, periods.year);
-        fprintf(file, "=> Cycle length: %d\n", periods.cycle_length);
-        fprintf(file, "=> Period length: %d\n\n", periods.period_length);
+        fprintf(file, "=> Last period date\t: %d/%d/%d\n", periods.day, periods.month, periods.year);
+        fprintf(file, "=> Cycle length\t\t: %d days\n", periods.cycle_length);
+        fprintf(file, "=> Period length\t: %d days\n\n", periods.period_length);
         fprintf(file, "YOUR PERIOD DATES FOR THE NEXT 3 MONTHS ARE:\n\n");
 
         for (int i = 0; i < 3; i++){
