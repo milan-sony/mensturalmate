@@ -107,41 +107,62 @@ void calculate_next_period_dates(){
         printf("\n\n\t PRESS ANY KEY TO CONTINUE");
     }
     else{
-
         printf("\n\n\tYOUR PERIOD DATES FOR THE NEXT 3 MONTHS ARE:\n\n");
 
         int day = periods.day;
         int month = periods.month;
         int year = periods.year;
-
-        /*
-        Calculate the period date for the next 3 months
-
-        1. First iterate the loop for 3 times
-
-        2. The next day is calculated by:
-        next day => day + cycle length
-
-        3. Here we assumes that the cycle length does not exceed the number of days in a month (30 in this case) and each month has only 30 days
-
-        4. If the day is greater than (>) 30 (which indicates that the next period extends to the next month)
-        subtract 30 from day to set it to the appropriate day within the month
-    
-        5. Then increment the value of the month by 1  to represent the next month
-
-        6. After incrementing the month, it checks if the updated month value exceeds 12, indicating that the period extends to the next year
-
-        7. If the month value is greater than 12, it sets month to 1 to represent January and increments the year variable by 1
-
-        8. The loop continues until it completes 3 iterations, printing the dates for the next 3 months
-
-        9. Finally, the function prints the message asking the user to press any key to continue and waits for a key press using getch()
-        */
+        int days_in_month;
 
         for (int i = 0; i < 3; i++){
+
+            // find number of days in a month
+            if(month == 1){
+                days_in_month = 31;
+            }
+            else if (month == 2){
+                if (year % 2 == 0){
+                    days_in_month = 29;
+                }
+                else{
+                    days_in_month = 28;
+                }
+            }
+            else if (month == 3){
+                days_in_month = 31;
+            }
+            else if (month == 4){
+                days_in_month = 30;
+            }
+            else if (month == 5){
+                days_in_month = 31;
+            }
+            else if (month == 6){
+                days_in_month = 30;
+            }
+            else if (month == 7){
+                days_in_month = 31;
+            }
+            else if (month == 8){
+                days_in_month = 30;
+            }
+            else if (month == 9){
+                days_in_month = 31;
+            }
+            else if (month == 10){
+                days_in_month = 30;
+            }
+            else if (month == 11){
+                days_in_month = 31;
+            }
+            else if (month == 12){
+                days_in_month = 30;
+            }
+
             day += periods.cycle_length;
-            if (day > 30){
-                day -= 30;
+
+            if (day > days_in_month){
+                day -= days_in_month;
                 month++;
                 if (month > 12){
                     month = 1;
@@ -169,6 +190,7 @@ void save_period_details(){
         int day = periods.day;
         int month = periods.month;
         int year = periods.year;
+        int days_in_month;
 
         // Create a file pointer
         FILE *file = fopen("period_details.txt", "w");
@@ -184,9 +206,53 @@ void save_period_details(){
         fprintf(file, "YOUR PERIOD DATES FOR THE NEXT 3 MONTHS ARE:\n\n");
 
         for (int i = 0; i < 3; i++){
+
+            if(month == 1){
+                days_in_month = 31;
+            }
+            else if (month == 2){
+                if (year % 2 == 0){
+                    days_in_month = 29;
+                }
+                else{
+                    days_in_month = 28;
+                }
+            }
+            else if (month == 3){
+                days_in_month = 31;
+            }
+            else if (month == 4){
+                days_in_month = 30;
+            }
+            else if (month == 5){
+                days_in_month = 31;
+            }
+            else if (month == 6){
+                days_in_month = 30;
+            }
+            else if (month == 7){
+                days_in_month = 31;
+            }
+            else if (month == 8){
+                days_in_month = 30;
+            }
+            else if (month == 9){
+                days_in_month = 31;
+            }
+            else if (month == 10){
+                days_in_month = 30;
+            }
+            else if (month == 11){
+                days_in_month = 31;
+            }
+            else if (month == 12){
+                days_in_month = 30;
+            }
+
             day += periods.cycle_length;
-            if (day > 30){
-                day -= 30;
+
+            if (day > days_in_month){
+                day -= days_in_month;
                 month++;
                 if (month > 12){
                     month = 1;
