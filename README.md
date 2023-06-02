@@ -16,18 +16,19 @@ To run this project, you need to install an IDE/Code Editor (<a href = "https://
 
 Check out this <a href = "https://www.javatpoint.com/how-to-run-a-c-program-in-visual-studio-code"> link </a> to know how to run a C program in Visual Studio Code.
 
-To compile the code
+## To compile the code
 
 ```bash
   gcc periods_tracker.c -o periods_tracker
 ```
 
-Run the code 
+## Run the code 
 
 ```bash
   .\periods_tracker
 ```
 
+## Sample code
 ```bash
 // stucture to hold the period details
 struct period_details
@@ -38,6 +39,13 @@ struct period_details
     int cycle_length;
     int period_length;
 }periods;
+```
+
+```bash
+    int day = periods.day;
+    int month = periods.month;
+    int year = periods.year;
+    int days_in_month;
 ```
 
 ```bash
